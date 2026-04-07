@@ -1,0 +1,11 @@
+{
+  "info": { "name": "smart-attendance", "_postman_id": "demo", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "item": [
+    { "name": "Health", "request": { "method": "GET", "url": "{{BASE}}/health" } },
+    { "name": "Login", "request": { "method": "POST", "url": "{{BASE}}/auth/login", "body": { "mode": "raw", "raw": "{\"email\":\"admin@example.com\",\"password\":\"admin\"}" } } },
+    { "name": "SV list", "request": { "method": "GET", "url": "{{BASE}}/sinh-vien" } },
+    { "name": "Checkin demo", "request": { "method": "POST", "url": "{{BASE}}/diem-danh/checkin", "body": { "mode": "raw", "raw": "{\"mssv\":\"21520001\",\"ma_lop\":\"CE101\"}" } } },
+    { "name": "Checkout demo", "request": { "method": "POST", "url": "{{BASE}}/diem-danh/checkout", "body": { "mode": "raw", "raw": "{\"mssv\":\"21520001\",\"ma_lop\":\"CE101\"}" } } }
+  ],
+  "variable": [{ "key": "BASE", "value": "http://127.0.0.1:8080/api" }]
+}

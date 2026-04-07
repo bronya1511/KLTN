@@ -1,0 +1,28 @@
+import express from "express";
+import cors from "cors";
+
+// Routers
+import faceRouter from "./routes/face.routes.js";
+import sinhVienRouter from "./routes/sinh-vien.routes.js";
+
+const app = express();
+
+// Middlewares
+app.use(cors({ origin: true }));   // cho ph�p t? localhost:5173
+app.use(express.json());
+
+// Health check
+app.get("/api/health", (_req, res) => {
+  res.json({ ok: true, ts: Date.now() });
+});
+
+// Mount routes
+app.use("/api/face", faceRouter);
+app.use("/api/sinh-vien", sinhVienRouter);
+
+// Start server
+const HOST = process.env.HOST || "0.0.0.0";
+const PORT = Number(process.env.PORT || 8080);
+app.listen(PORT, HOST, () => {
+  console.log(`Backend dang chay tai http://${HOST}:${PORT}`);
+});

@@ -1,0 +1,6 @@
+import LopHocPage from "./pages/LopHocPage.jsx";
+import React from "react";
+import SinhVienList from "./pages/SinhVienList.jsx";
+export default function App() {
+  return <SinhVienList />;
+}

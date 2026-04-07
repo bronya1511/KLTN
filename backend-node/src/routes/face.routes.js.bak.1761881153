@@ -1,0 +1,53 @@
+import { Router } from "express";
+import { spawn } from "child_process";
+import path from "path";
+import fs from "fs";
+
+const router = Router();
+
+function runPy({ py, cwd, args = [] }) {
+  return new Promise((resolve, reject) => {
+    const p = spawn(py, args, { cwd, env: process.env, stdio: ["ignore","pipe","pipe"] });
+    let logs = "";
+    const tm = setTimeout(() => { try { p.kill("SIGKILL"); } catch {} reject(new Error("Timeout python")); }, 10*60*1000);
+    p.stdout.on("data", d => logs += d.toString());
+    p.stderr.on("data", d => logs += d.toString());
+    p.on("error", reject);
+    p.on("close", code => { clearTimeout(tm); code === 0 ? resolve(logs) : reject(new Error(`Exit ${code}\n${logs}`)); });
+  });
+}
+
+router.get("/ping", (_req,res)=>res.json({ ok:true, at: Date.now() }));
+
+/**
+ * POST /api/face/enroll
+ * body: { mssv: string, soAnh?: number }
+ * FaceDetect.py yeu cau: python3 FaceDetect.py <mssv> [so_anh]
+ */
+router.post("/enroll", async (req, res) => {
+  try {
+    const { mssv, soAnh = 20 } = req.body || {};
+    if (!mssv || typeof mssv !== "string") {
+      return res.status(400).json({ ok:false, message:"Thieu mssv" });
+    }
+    const PY = process.env.PYTHON_BIN || "python3";
+    const FACE_DIR = process.env.PYTHON_FACE_DIR || "../python-face";
+    const faceDetect = path.resolve(FACE_DIR, "FaceDetect.py");
+    const trainPy = path.resolve(FACE_DIR, "Train.py");
+
+    if (!fs.existsSync(faceDetect)) return res.status(500).json({ ok:false, message:"Khong thay FaceDetect.py" });
+    if (!fs.existsSync(trainPy))   return res.status(500).json({ ok:false, message:"Khong thay Train.py" });
+
+    // 1) FaceDetect theo dung cu phap: <mssv> [so_anh]
+    const detectLogs = await runPy({ py: PY, cwd: FACE_DIR, args: [faceDetect, mssv, String(soAnh)] });
+
+    // 2) Train
+    const trainLogs = await runPy({ py: PY, cwd: FACE_DIR, args: [trainPy] });
+
+    return res.json({ ok:true, step:"enroll+train", mssv, detectTail: detectLogs.slice(-2000), trainTail: trainLogs.slice(-2000) });
+  } catch (e) {
+    return res.status(500).json({ ok:false, message: String(e) });
+  }
+});
+
+export default router;

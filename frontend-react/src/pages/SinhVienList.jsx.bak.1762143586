@@ -1,0 +1,157 @@
+import React, { useEffect, useState } from "react";
+
+/**
+ * Thứ tự endpoint sẽ thử:
+ * 1) VITE_API_URL (nếu có), vd: http://127.0.0.1:8080
+ * 2) Cùng origin (proxy):          /api
+ * 3) Mặc định:                     http://127.0.0.1:8080
+ */
+function buildCandidates() {
+  const cands = [];
+  const envBase =
+    typeof import.meta !== "undefined" &&
+    import.meta.env &&
+    import.meta.env.VITE_API_URL
+      ? String(import.meta.env.VITE_API_URL).replace(/\/+$/, "")
+      : "";
+
+  if (envBase) cands.push(envBase);
+  // proxy same-origin
+  cands.push("");
+  // default localhost:8080
+  cands.push("http://127.0.0.1:8080");
+
+  // Loại trùng
+  return [...new Set(cands)];
+}
+
+async function tryFetchList(base, params) {
+  const qs = new URLSearchParams(params).toString();
+  const url = base
+    ? `${base}/api/sinh-vien?${qs}`
+    : `/api/sinh-vien?${qs}`; // same-origin khi base=""
+
+  const res = await fetch(url, { headers: { Accept: "application/json" } });
+  const text = await res.text();
+
+  let json;
+  try {
+    json = JSON.parse(text);
+  } catch (e) {
+    throw new Error(`Không parse được JSON từ ${url}. Status ${res.status}. Body: ${text.slice(0, 200)}`);
+  }
+
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status} khi gọi ${url}. Body: ${text.slice(0, 200)}`);
+  }
+
+  if (!json || typeof json !== "object" || !Array.isArray(json.items)) {
+    throw new Error(`JSON không có field 'items' từ ${url}. Body: ${text.slice(0, 200)}`);
+  }
+
+  return { url, data: json };
+}
+
+export default function SinhVienList() {
+  const [rows, setRows] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [keyword, setKeyword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [diag, setDiag] = useState([]); // nhật ký các lần thử
+
+  const candidates = buildCandidates();
+
+  async function load() {
+    setLoading(true);
+    setDiag([]);
+    setRows([]);
+    setTotal(0);
+
+    const params = { page: "1", limit: "50" };
+    if (keyword) params.keyword = keyword;
+
+    for (const base of candidates) {
+      try {
+        const { url, data } = await tryFetchList(base, params);
+        setDiag((d) => [...d, `✅ OK: ${url} (total=${data?.total ?? data.items.length})`]);
+        setRows(data.items);
+        setTotal(data?.total ?? data.items.length);
+        setLoading(false);
+        return; // thành công -> dừng
+      } catch (err) {
+        console.error(err);
+        setDiag((d) => [...d, `❌ ${err.message}`]);
+      }
+    }
+
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-semibold mb-4">Sinh viên</h1>
+
+      <div className="flex gap-2 items-center mb-4">
+        <input
+          className="border rounded px-3 py-2 w-64"
+          placeholder="Tìm..."
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button
+          onClick={load}
+          className="px-3 py-2 rounded bg-black text-white"
+          disabled={loading}
+        >
+          {loading ? "Đang tải..." : "Tải lại"}
+        </button>
+        <span className="text-sm text-gray-600 ml-2">Tổng: {total}</span>
+      </div>
+
+      {/* Bảng dữ liệu */}
+      <div className="border rounded mb-4">
+        <table className="w-full text-sm">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="text-left p-2">MSSV</th>
+              <th className="text-left p-2">Họ tên</th>
+              <th className="text-left p-2">Email</th>
+              <th className="text-left p-2">Khóa học</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.length === 0 && (
+              <tr>
+                <td className="p-3 text-gray-500" colSpan={4}>Chưa có dữ liệu</td>
+              </tr>
+            )}
+            {rows.map((sv) => (
+              <tr key={sv.mssv} className="border-t">
+                <td className="p-2">{sv.mssv}</td>
+                <td className="p-2">{sv.ho_ten}</td>
+                <td className="p-2">{sv.email}</td>
+                <td className="p-2">{sv.khoa_hoc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Khung chẩn đoán hiển thị mọi endpoint đã thử và lỗi nếu có */}
+      <details open className="mb-2">
+        <summary className="font-medium cursor-pointer">Chẩn đoán kết nối API</summary>
+        <div className="mt-2 whitespace-pre-wrap text-xs bg-gray-50 border rounded p-2">
+          Thử lần lượt các endpoint:
+          {"\n"}{candidates.map((b,i)=>`${i+1}. ${b || "(same-origin /api)"}`).join("\n")}
+          {"\n\n"}Kết quả:
+          {"\n"}{diag.join("\n") || "(đang chờ...)"}
+        </div>
+      </details>
+    </div>
+  );
+}

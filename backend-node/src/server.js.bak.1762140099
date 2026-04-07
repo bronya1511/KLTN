@@ -1,0 +1,94 @@
+import express from "express";
+import cors from "cors";
+import { spawn } from "child_process";
+import pool from "./db.js";
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// ---- Health
+app.get("/api/health", (_req, res) => res.json({ ok: true, ts: Date.now() }));
+
+// ---- T?o SV + Enroll + Train
+app.post("/api/sinh-vien", async (req, res) => {
+  try {
+    const { mssv, ho_ten, email, khoa_hoc, soAnh = 3 } = req.body || {};
+    if (!mssv || !ho_ten || !email || !khoa_hoc) {
+      return res.status(400).json({ ok: false, message: "Thieu truong bat buoc" });
+    }
+
+    // upsert sinh_vien
+    await pool.query(
+      "INSERT INTO sinh_vien (mssv, ho_ten, email, khoa_hoc) VALUES (?,?,?,?) \
+       ON DUPLICATE KEY UPDATE ho_ten=VALUES(ho_ten), email=VALUES(email), khoa_hoc=VALUES(khoa_hoc)",
+      [mssv, ho_ten, email, khoa_hoc]
+    );
+
+    // Enroll (FaceDetect.py) -> Train.py
+    const PYDIR = process.env.PYTHON_FACE_DIR || "../python-face";
+    const PYBIN = process.env.PYTHON_BIN || "python3";
+
+    const run = (cmd, args, cwd) =>
+      new Promise((resolve, reject) => {
+        const ps = spawn(cmd, args, { cwd });
+        let out = "", err = "";
+        ps.stdout.on("data", d => (out += d.toString()));
+        ps.stderr.on("data", d => (err += d.toString()));
+        ps.on("close", code => (code === 0 ? resolve(out) : reject(new Error(`Exit ${code}\n${out}${err}`))));
+      });
+
+    // FaceDetect: t?o th� m?c dataset/<mssv> v� ch?p soAnh
+    await run(PYBIN, ["FaceDetect.py", String(mssv), String(soAnh)], PYDIR);
+    // Train: c?p nh?t encodings.pickle
+    await run(PYBIN, ["Train.py"], PYDIR);
+
+    res.json({ ok: true, message: "Tao SV + Enroll + Train thanh cong" });
+  } catch (e) {
+    res.status(500).json({ ok: false, message: String(e) });
+  }
+});
+
+// ---- Danh s�ch SV (ph�n trang + t?m ki?m)
+app.get("/api/sinh-vien", async (req, res) => {
+  try {
+    const page = Math.max(1, parseInt(req.query.page || "1", 10));
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit || "20", 10)));
+    const offset = (page - 1) * limit;
+    const kw = (req.query.keyword || "").trim();
+
+    let where = "";
+    let params = [];
+    if (kw) {
+      where =
+        "WHERE mssv LIKE ? OR ho_ten LIKE ? OR email LIKE ? OR khoa_hoc LIKE ?";
+      const p = `%${kw}%`;
+      params = [p, p, p, p];
+    }
+
+    const [rows] = await pool.query(
+      `SELECT mssv, ho_ten, email, khoa_hoc
+         FROM sinh_vien
+         ${where}
+         ORDER BY mssv DESC
+         LIMIT ? OFFSET ?`,
+      [...params, limit, offset]
+    );
+
+    const [cnt] = await pool.query(
+      `SELECT COUNT(*) AS total FROM sinh_vien ${where}`,
+      params
+    );
+    const total = cnt[0]?.total ?? 0;
+
+    res.json({ ok: true, data: rows, page, limit, total });
+  } catch (e) {
+    res.status(500).json({ ok: false, message: String(e) });
+  }
+});
+
+const HOST = process.env.HOST || "0.0.0.0";
+const PORT = Number(process.env.PORT || 8080);
+app.listen(PORT, HOST, () => {
+  console.log(`Backend dang chay tai http://${HOST}:${PORT}`);
+});

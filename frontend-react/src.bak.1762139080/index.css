@@ -1,0 +1,6 @@
+
+/* Hide old menu tab "Them SV + Nhap khuon mat" */
+a[href="/them-sv"] { display: none !important; }
+
+/* Hide old menu tab "Them SV + Nhap khuon mat" */
+a[href="/them-sv"] { display: none !important; }

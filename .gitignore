@@ -1,0 +1,33 @@
+# ENV
+.env
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual env
+venv/
+venv_cam/
+python-face/venv/
+python-face/venv_cam/
+python-face/models/
+# AI Models (QUAN TRỌNG)
+*.onnx
+*.pt
+*.dat
+
+# Dataset
+dataset/
+
+# Logs
+logs/
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

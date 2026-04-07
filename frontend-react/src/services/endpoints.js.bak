@@ -1,0 +1,13 @@
+// src/services/endpoints.js
+import { API_BASE } from "./api";
+
+export const endpoints = {
+  sinhVien: {
+    list: () => `${API_BASE}/sinh-vien`,
+    byId: (mssv) => `${API_BASE}/sinh-vien/${encodeURIComponent(mssv)}`,
+  },
+  lopHoc: {
+    list: () => `${API_BASE}/lop-hoc`,
+    byId: (ma_lop) => `${API_BASE}/lop-hoc/${encodeURIComponent(ma_lop)}`,
+  },
+};

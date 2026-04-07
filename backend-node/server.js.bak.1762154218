@@ -1,0 +1,82 @@
+const express = require('express');
+const cors = require('cors');
+const pool = require('./db');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.get('/api/health', (req,res)=>res.json({ok:true, ts: Date.now()}));
+
+/** --------- SINH VIEN ---------- **/
+
+// List
+app.get('/api/sinh-vien', async (req,res)=>{
+  try{
+    const page = Math.max(parseInt(req.query.page||'1'),1);
+    const limit = Math.max(parseInt(req.query.limit||'50'),1);
+    const offset = (page-1)*limit;
+
+    const [rows] = await pool.execute(
+      'SELECT mssv, ho_ten, email, khoa_hoc FROM sinh_vien ORDER BY tao_luc DESC LIMIT ? OFFSET ?',
+      [limit, offset]
+    );
+    const [tot] = await pool.execute('SELECT COUNT(*) AS c FROM sinh_vien');
+    res.json({items: rows, page, limit, total: tot[0].c});
+  }catch(e){ res.status(500).json({ok:false, message: String(e.message||e)})}
+});
+
+// T?o m?i + enroll + train (b?n �? c�; �? nguy�n n?u tr�?c �� ch?y ok)
+app.post('/api/sinh-vien', async (req,res)=>{
+  try{
+    const { mssv, ho_ten, email, khoa_hoc } = req.body||{};
+    if(!mssv) return res.status(400).json({ok:false,message:'Thi?u mssv'});
+    await pool.execute(
+      'INSERT INTO sinh_vien (mssv, ho_ten, email, khoa_hoc, trang_thai, tao_luc, cap_nhat_luc) VALUES (?,?,?,?, "Dang hoc", NOW(), NOW()) ON DUPLICATE KEY UPDATE ho_ten=VALUES(ho_ten), email=VALUES(email), khoa_hoc=VALUES(khoa_hoc), cap_nhat_luc=NOW()',
+      [mssv, ho_ten||'', email||'', khoa_hoc||'']
+    );
+    res.json({ok:true});
+  }catch(e){ res.status(500).json({ok:false, message:String(e.message||e)}); }
+});
+
+// C?p nh?t (S?A)
+app.put('/api/sinh-vien/:mssv', async (req,res)=>{
+  try{
+    const mssv = req.params.mssv;
+    const { ho_ten='', email='', khoa_hoc='' } = req.body||{};
+    const [r] = await pool.execute(
+      'UPDATE sinh_vien SET ho_ten=?, email=?, khoa_hoc=?, cap_nhat_luc=NOW() WHERE mssv=?',
+      [ho_ten, email, khoa_hoc, mssv]
+    );
+    if(r.affectedRows===0) return res.status(404).json({ok:false,message:'Kh�ng t?m th?y MSSV'});
+    res.json({ok:true});
+  }catch(e){ res.status(500).json({ok:false, message:String(e.message||e)}); }
+});
+
+// X�a
+app.delete('/api/sinh-vien/:mssv', async (req,res)=>{
+  try{
+    const mssv = req.params.mssv;
+    const [r] = await pool.execute('DELETE FROM sinh_vien WHERE mssv=?',[mssv]);
+    if(r.affectedRows===0) return res.status(404).json({ok:false,message:'Kh�ng t?m th?y MSSV'});
+    res.json({ok:true});
+  }catch(e){ res.status(500).json({ok:false, message:String(e.message||e)}); }
+});
+
+/** --------- L?CH S? ---------- **/
+app.get('/api/lich-su', async (req,res)=>{
+  try{
+    const page = Math.max(parseInt(req.query.page||'1'),1);
+    const limit = Math.max(parseInt(req.query.limit||'20'),1);
+    const offset = (page-1)*limit;
+    const [rows] = await pool.execute(
+      'SELECT id, mssv, ho_ten, thoi_gian, trang_thai, thiet_bi FROM lich_su_diem_danh ORDER BY thoi_gian DESC LIMIT ? OFFSET ?',
+      [limit, offset]
+    );
+    const [tot] = await pool.execute('SELECT COUNT(*) AS c FROM lich_su_diem_danh');
+    res.json({items: rows, page, limit, total: tot[0].c});
+  }catch(e){ res.status(500).json({ok:false, message:String(e.message||e)}); }
+});
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, ()=> console.log(`Backend listening on ${PORT}`));

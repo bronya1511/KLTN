@@ -1,0 +1,67 @@
+import express from "express";
+import cors from "cors";
+import mysql from "mysql2/promise";
+import { spawn } from "child_process";
+import path from "path";
+
+// ====== APP ======
+const app = express();
+app.use(cors({ origin: true }));
+app.use(express.json());
+
+// ====== HEALTH ======
+app.get("/api/health", (_req, res) => res.json({ ok: true, ts: Date.now() }));
+
+// ====== DB POOL ======
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || "127.0.0.1",
+  port: Number(process.env.DB_PORT || 3306),
+  user: process.env.DB_USER || "thith",
+  password: process.env.DB_PASSWORD || "15112004",
+  database: process.env.DB_NAME || "diem_danh",
+  connectionLimit: 5,
+});
+
+// ====== POST /api/sinh-vien ======
+app.post("/api/sinh-vien", async (req, res) => {
+  try {
+    const { mssv, ho_ten, email, khoa_hoc } = req.body || {};
+    if (!mssv) return res.status(400).json({ ok: false, message: "Missing mssv" });
+
+    // L�u/ c?p nh?t SV
+    await pool.query(
+      `INSERT INTO sinh_vien (mssv, ho_ten, email, khoa_hoc)
+       VALUES (?, ?, ?, ?)
+       ON DUPLICATE KEY UPDATE ho_ten=VALUES(ho_ten), email=VALUES(email), khoa_hoc=VALUES(khoa_hoc)`,
+      [mssv, ho_ten || null, email || null, khoa_hoc || null]
+    );
+
+    // Ch?y FaceDetect + Train
+    const pyDir = process.env.PYTHON_FACE_DIR || "../python-face";
+    const pyBin = process.env.PYTHON_BIN || "python3";
+    const detectPath = path.join(pyDir, "FaceDetect.py");
+    const trainPath  = path.join(pyDir, "Train.py");
+
+    const logs = { detectTail: "", trainTail: "" };
+
+    const detect = spawn(pyBin, [detectPath, mssv, "3"], { cwd: pyDir });
+    detect.stdout.on("data", d => { logs.detectTail = (logs.detectTail + d.toString()).slice(-4000); });
+    detect.stderr.on("data", d => { logs.detectTail = (logs.detectTail + d.toString()).slice(-4000); });
+    detect.on("close", () => {
+      const train = spawn(pyBin, [trainPath], { cwd: pyDir });
+      train.stdout.on("data", d => { logs.trainTail = (logs.trainTail + d.toString()).slice(-4000); });
+      train.stderr.on("data", d => { logs.trainTail = (logs.trainTail + d.toString()).slice(-4000); });
+      train.on("close", () => res.json({ ok: true, step: "create+enroll+train", mssv, logs }));
+    });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, message: e.message });
+  }
+});
+
+// ====== START ======
+const HOST = process.env.HOST || "0.0.0.0";
+const PORT = Number(process.env.PORT || 8080);
+app.listen(PORT, HOST, () => {
+  console.log(`Backend dang chay tai http://${HOST}:${PORT}`);
+});

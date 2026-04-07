@@ -1,0 +1,129 @@
+import { Router } from "express";
+import pool from "../db.js";
+import { runFaceThenTrain } from "../utils/runner.js"; // goi pipeline detect -> train
+
+const r = Router();
+
+// ping de test mount
+r.get("/ping", (req, res) => res.json({ ok: true, route: "/api/sinh-vien" }));
+
+// GET /api/sinh-vien
+r.get("/", async (req, res) => {
+  try {
+    const page = Math.max(1, parseInt(req.query.page || "1", 10));
+    const limit = Math.max(1, Math.min(200, parseInt(req.query.limit || "20", 10)));
+    const kw = (req.query.keyword || "").trim();
+    const offset = (page - 1) * limit;
+
+    const where = [];
+    const params = [];
+    if (kw) {
+      where.push("(mssv LIKE ? OR ho_ten LIKE ? OR email LIKE ? OR khoa_hoc LIKE ?)");
+      params.push(`%${kw}%`, `%${kw}%`, `%${kw}%`, `%${kw}%`);
+    }
+    const whereSql = where.length ? `WHERE ${where.join(" AND ")}` : "";
+
+    const sql = `
+      SELECT mssv, ho_ten, email, khoa_hoc
+      FROM sinh_vien
+      ${whereSql}
+      ORDER BY mssv ASC
+      LIMIT ${offset}, ${limit}
+    `;
+    const [rows] = await pool.query(sql, params);
+
+    // LUU Y: KHONG duoc co dau "\" truoc backtick o dong ben duoi
+    const [[{ total }]] = await pool.query(
+      `SELECT COUNT(*) AS total FROM sinh_vien ${whereSql}`,
+      params
+    );
+
+    res.json({ items: rows, page, limit, total });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, message: String(e) });
+  }
+});
+
+// POST /api/sinh-vien
+r.post("/", async (req, res) => {
+  try {
+    const { mssv, ho_ten, email, khoa_hoc } = req.body || {};
+    if (!mssv || !ho_ten) {
+      return res.status(400).json({ ok: false, message: "mssv va ho_ten bat buoc" });
+    }
+
+    await pool.query(
+      "INSERT INTO sinh_vien (mssv, ho_ten, email, khoa_hoc) VALUES (?,?,?,?)",
+      [mssv, ho_ten, email ?? null, khoa_hoc ?? null]
+    );
+
+    // Kich hoat FaceDetect -> Train chay nen, khong chan API
+    try {
+      runFaceThenTrain({ mssv, ho_ten });
+    } catch (err) {
+      console.error("Start FaceDetect->Train failed:", err);
+    }
+
+    res.json({ ok: true, mssv, pipeline: "started" });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, message: String(e) });
+  }
+});
+
+// PUT /api/sinh-vien/:mssv
+r.put("/:mssv", async (req, res) => {
+  try {
+    const { mssv } = req.params;
+    const { ho_ten, email, khoa_hoc } = req.body || {};
+
+    // LUU Y: KHONG duoc co dau "\" truoc backtick o template string
+    const [ret] = await pool.query(
+      `UPDATE sinh_vien SET
+         ho_ten   = COALESCE(?, ho_ten),
+         email    = COALESCE(?, email),
+         khoa_hoc = COALESCE(?, khoa_hoc)
+       WHERE mssv = ?`,
+      [ho_ten, email, khoa_hoc, mssv]
+    );
+
+    if (ret.affectedRows === 0) {
+      return res.status(404).json({ ok: false, message: "Khong tim thay SV" });
+    }
+    res.json({ ok: true, mssv });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, message: String(e) });
+  }
+});
+
+// DELETE /api/sinh-vien/:mssv
+r.delete("/:mssv", async (req, res) => {
+  try {
+    const { mssv } = req.params;
+    const [ret] = await pool.query("DELETE FROM sinh_vien WHERE mssv=?", [mssv]);
+    if (ret.affectedRows === 0) {
+      return res.status(404).json({ ok: false, message: "Khong tim thay SV" });
+    }
+    res.json({ ok: true, mssv });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, message: String(e) });
+  }
+});
+
+// Tuy chon: API retrain thu cong
+r.post("/:mssv/retrain", async (req, res) => {
+  const { mssv } = req.params;
+  const { ho_ten = "" } = req.body || {};
+  try {
+    runFaceThenTrain({ mssv, ho_ten });
+    res.json({ ok: true, started: true, mssv });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, message: String(e) });
+  }
+});
+
+export default r;

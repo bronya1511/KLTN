@@ -1,0 +1,88 @@
+import React, { useEffect, useState } from "react";
+
+// Cho ph�p �?t BASE API qua Vite env VITE_API_URL, m?c �?nh localhost:8080
+const BASE = (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_API_URL)
+  ? import.meta.env.VITE_API_URL
+  : "http://127.0.0.1:8080";
+
+export default function SinhVienList() {
+  const [rows, setRows] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [keyword, setKeyword] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function load() {
+    setLoading(true);
+    try {
+      const qs = new URLSearchParams({ page: "1", limit: "50", ...(keyword ? { keyword } : {}) });
+      const res = await fetch(`${BASE}/api/sinh-vien?${qs.toString()}`);
+      const json = await res.json();
+
+      // API c?a b?n tr? d?ng { items, page, limit, total }
+      const items = Array.isArray(json?.items) ? json.items : [];
+      setRows(items);
+      setTotal(json?.total ?? items.length);
+    } catch (err) {
+      console.error("FETCH /api/sinh-vien error:", err);
+      setRows([]);
+      setTotal(0);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    load(); // t?i l?n �?u
+  }, []);
+
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-semibold mb-4">Sinh vi�n</h1>
+
+      <div className="flex gap-2 items-center mb-4">
+        <input
+          className="border rounded px-3 py-2 w-64"
+          placeholder="T?m..."
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button
+          onClick={load}
+          className="px-3 py-2 rounded bg-black text-white"
+          disabled={loading}
+        >
+          {loading ? "�ang t?i..." : "T?i l?i"}
+        </button>
+        <span className="text-sm text-gray-600 ml-2">T?ng: {total}</span>
+      </div>
+
+      <div className="border rounded">
+        <table className="w-full text-sm">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="text-left p-2">MSSV</th>
+              <th className="text-left p-2">H? t�n</th>
+              <th className="text-left p-2">Email</th>
+              <th className="text-left p-2">Kh�a h?c</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.length === 0 && (
+              <tr>
+                <td className="p-3 text-gray-500" colSpan={4}>Ch�a c� d? li?u</td>
+              </tr>
+            )}
+            {rows.map((sv) => (
+              <tr key={sv.mssv} className="border-t">
+                <td className="p-2">{sv.mssv}</td>
+                <td className="p-2">{sv.ho_ten}</td>
+                <td className="p-2">{sv.email}</td>
+                <td className="p-2">{sv.khoa_hoc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}

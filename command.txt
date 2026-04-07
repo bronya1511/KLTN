@@ -1,0 +1,1524 @@
+react-dom.development.js:29895 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+deprecations.ts:9  ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+warnOnce @ deprecations.ts:9
+logDeprecation @ deprecations.ts:14
+logV6DeprecationWarnings @ deprecations.ts:26
+(anonymous) @ index.tsx:816
+commitHookEffectListMount @ react-dom.development.js:23189
+commitPassiveMountOnFiber @ react-dom.development.js:24965
+commitPassiveMountEffects_complete @ react-dom.development.js:24930
+commitPassiveMountEffects_begin @ react-dom.development.js:24917
+commitPassiveMountEffects @ react-dom.development.js:24905
+flushPassiveEffectsImpl @ react-dom.development.js:27078
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+deprecations.ts:9  ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+warnOnce @ deprecations.ts:9
+logDeprecation @ deprecations.ts:14
+logV6DeprecationWarnings @ deprecations.ts:37
+(anonymous) @ index.tsx:816
+commitHookEffectListMount @ react-dom.development.js:23189
+commitPassiveMountOnFiber @ react-dom.development.js:24965
+commitPassiveMountEffects_complete @ react-dom.development.js:24930
+commitPassiveMountEffects_begin @ react-dom.development.js:24917
+commitPassiveMountEffects @ react-dom.development.js:24905
+flushPassiveEffectsImpl @ react-dom.development.js:27078
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+[NEW] Explain Console errors by using Copilot in Edge: click
+         
+         to explain an error. 
+        Learn more
+        Don't show again
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:70
+commitHookEffectListMount @ react-dom.development.js:23189
+commitPassiveMountOnFiber @ react-dom.development.js:24965
+commitPassiveMountEffects_complete @ react-dom.development.js:24930
+commitPassiveMountEffects_begin @ react-dom.development.js:24917
+commitPassiveMountEffects @ react-dom.development.js:24905
+flushPassiveEffectsImpl @ react-dom.development.js:27078
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:70:5
+    at commitHookEffectListMount (react-dom.development.js:23189:26)
+    at commitPassiveMountOnFiber (react-dom.development.js:24965:13)
+    at commitPassiveMountEffects_complete (react-dom.development.js:24930:9)
+    at commitPassiveMountEffects_begin (react-dom.development.js:24917:7)
+    at commitPassiveMountEffects (react-dom.development.js:24905:3)
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:70
+commitHookEffectListMount @ react-dom.development.js:23189
+commitPassiveMountOnFiber @ react-dom.development.js:24965
+commitPassiveMountEffects_complete @ react-dom.development.js:24930
+commitPassiveMountEffects_begin @ react-dom.development.js:24917
+commitPassiveMountEffects @ react-dom.development.js:24905
+flushPassiveEffectsImpl @ react-dom.development.js:27078
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:70
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:70:5
+    at commitHookEffectListMount (react-dom.development.js:23189:26)
+    at invokePassiveEffectMountInDEV (react-dom.development.js:25193:13)
+    at invokeEffectsInDev (react-dom.development.js:27390:11)
+    at commitDoubleInvokeEffectsInDEV (react-dom.development.js:27369:7)
+    at flushPassiveEffectsImpl (react-dom.development.js:27095:5)
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:70
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+react-dom.development.js:29895 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+deprecations.ts:9  ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+warnOnce @ deprecations.ts:9
+logDeprecation @ deprecations.ts:14
+logV6DeprecationWarnings @ deprecations.ts:26
+(anonymous) @ index.tsx:816
+commitHookEffectListMount @ react-dom.development.js:23189
+commitPassiveMountOnFiber @ react-dom.development.js:24965
+commitPassiveMountEffects_complete @ react-dom.development.js:24930
+commitPassiveMountEffects_begin @ react-dom.development.js:24917
+commitPassiveMountEffects @ react-dom.development.js:24905
+flushPassiveEffectsImpl @ react-dom.development.js:27078
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+deprecations.ts:9  ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+warnOnce @ deprecations.ts:9
+logDeprecation @ deprecations.ts:14
+logV6DeprecationWarnings @ deprecations.ts:37
+(anonymous) @ index.tsx:816
+commitHookEffectListMount @ react-dom.development.js:23189
+commitPassiveMountOnFiber @ react-dom.development.js:24965
+commitPassiveMountEffects_complete @ react-dom.development.js:24930
+commitPassiveMountEffects_begin @ react-dom.development.js:24917
+commitPassiveMountEffects @ react-dom.development.js:24905
+flushPassiveEffectsImpl @ react-dom.development.js:27078
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+[NEW] Explain Console errors by using Copilot in Edge: click
+         
+         to explain an error. 
+        Learn more
+        Don't show again
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:70
+commitHookEffectListMount @ react-dom.development.js:23189
+commitPassiveMountOnFiber @ react-dom.development.js:24965
+commitPassiveMountEffects_complete @ react-dom.development.js:24930
+commitPassiveMountEffects_begin @ react-dom.development.js:24917
+commitPassiveMountEffects @ react-dom.development.js:24905
+flushPassiveEffectsImpl @ react-dom.development.js:27078
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:70:5
+    at commitHookEffectListMount (react-dom.development.js:23189:26)
+    at commitPassiveMountOnFiber (react-dom.development.js:24965:13)
+    at commitPassiveMountEffects_complete (react-dom.development.js:24930:9)
+    at commitPassiveMountEffects_begin (react-dom.development.js:24917:7)
+    at commitPassiveMountEffects (react-dom.development.js:24905:3)
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:70
+commitHookEffectListMount @ react-dom.development.js:23189
+commitPassiveMountOnFiber @ react-dom.development.js:24965
+commitPassiveMountEffects_complete @ react-dom.development.js:24930
+commitPassiveMountEffects_begin @ react-dom.development.js:24917
+commitPassiveMountEffects @ react-dom.development.js:24905
+flushPassiveEffectsImpl @ react-dom.development.js:27078
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:70
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:70:5
+    at commitHookEffectListMount (react-dom.development.js:23189:26)
+    at invokePassiveEffectMountInDEV (react-dom.development.js:25193:13)
+    at invokeEffectsInDev (react-dom.development.js:27390:11)
+    at commitDoubleInvokeEffectsInDEV (react-dom.development.js:27369:7)
+    at flushPassiveEffectsImpl (react-dom.development.js:27095:5)
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:70
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+api.js:31 [API] GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50
+api.js:19   GET http://127.0.0.1:8080/api/diem-danh/logs?page=1&limit=50 net::ERR_CONNECTION_REFUSED
+fetchWithTimeout @ api.js:19
+http @ api.js:33
+get @ api.js:70
+load @ DiemDanh.jsx:26
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533
+DiemDanh.jsx:29  TypeError: Failed to fetch
+    at fetchWithTimeout (api.js:19:23)
+    at http (api.js:33:21)
+    at Object.get (api.js:70:28)
+    at load (DiemDanh.jsx:26:34)
+    at DiemDanh.jsx:73:7
+load @ DiemDanh.jsx:29
+await in load
+(anonymous) @ DiemDanh.jsx:73
+setInterval
+(anonymous) @ DiemDanh.jsx:72
+commitHookEffectListMount @ react-dom.development.js:23189
+invokePassiveEffectMountInDEV @ react-dom.development.js:25193
+invokeEffectsInDev @ react-dom.development.js:27390
+commitDoubleInvokeEffectsInDEV @ react-dom.development.js:27369
+flushPassiveEffectsImpl @ react-dom.development.js:27095
+flushPassiveEffects @ react-dom.development.js:27023
+(anonymous) @ react-dom.development.js:26808
+workLoop @ scheduler.development.js:266
+flushWork @ scheduler.development.js:239
+performWorkUntilDeadline @ scheduler.development.js:533

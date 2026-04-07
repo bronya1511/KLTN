@@ -1,0 +1,59 @@
+import React from "react";
+import { BrowserRouter, Routes, Route, NavLink, Navigate } from "react-router-dom";
+import SinhVienPage from "./pages/SinhVienPage.jsx";
+import LopHocPage from "./pages/LopHocPage.jsx";
+import LichSuDiemDanhPage from "./pages/LichSuDiemDanhPage.jsx";
+import DiemDanhTuDongPage from "./pages/DiemDanhTuDongPage.jsx";
+
+const Menu = () => (
+  <nav style={{borderBottom:"1px solid #eee", padding:"12px 16px", display:"flex", gap:16, flexWrap:"wrap"}}>
+    {[
+      ["/sinh-vien", "Sinh vi�n"],
+      ["/lop-hoc", "L?p h?c"],
+      ["/lich-su-diem-danh", "L?ch s? �i?m danh"],
+      ["/diem-danh-tu-dong", "�i?m danh t? �?ng"],
+    ].map(([to, label]) => (
+      <NavLink
+        key={to}
+        to={to}
+        style={({isActive})=>({
+          padding:"6px 10px",
+          borderRadius:8,
+          background: isActive ? "#000" : "transparent",
+          color: isActive ? "#fff" : "#000"
+        })}
+      >
+        {label}
+      </NavLink>
+    ))}
+  </nav>
+);
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Menu />
+      <div style={{padding:"20px 24px", maxWidth:1100, margin:"0 auto"}}>
+        <Routes>
+          {/* trang m?c �?nh */}
+          <Route path="/" element={<Navigate to="/sinh-vien" replace />} />
+
+          {/* c�c route ch�nh */}
+          <Route path="/sinh-vien" element={<SinhVienPage />} />
+          <Route path="/lop-hoc" element={<LopHocPage />} />
+          <Route path="/lich-su-diem-danh" element={<LichSuDiemDanhPage />} />
+          <Route path="/diem-danh-tu-dong" element={<DiemDanhTuDongPage />} />
+
+          {/* alias cho c�c ��?ng link c?/vi?t t?t �? tr�nh tr?ng trang */}
+          <Route path="/sv" element={<Navigate to="/sinh-vien" replace />} />
+          <Route path="/lh" element={<Navigate to="/lop-hoc" replace />} />
+          <Route path="/lich-su" element={<Navigate to="/lich-su-diem-danh" replace />} />
+          <Route path="/tu-dong" element={<Navigate to="/diem-danh-tu-dong" replace />} />
+
+          {/* fallback */}
+          <Route path="*" element={<Navigate to="/sinh-vien" replace />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}

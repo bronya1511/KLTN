@@ -1,0 +1,178 @@
+// Trang quan ly Lop hoc: them, sua inline, xoa (chu thich TV khong dau)
+import React, { useEffect, useMemo, useState } from "react";
+const API = import.meta.env.VITE_API_BASE?.replace(/\/+$/,'') || "http://127.0.0.1:8080";
+
+export default function LopHocPage() {
+  const [items, setItems] = useState([]);
+  const [page, setPage] = useState(1);
+  const [limit] = useState(50);
+  const [total, setTotal] = useState(0);
+  const [kw, setKw] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
+  const [maLop, setMaLop] = useState("");
+  const [tenLop, setTenLop] = useState("");
+  const [ghiChu, setGhiChu] = useState("");
+  const [editRow, setEditRow] = useState(null);
+
+  const query = useMemo(() => {
+    const p = new URLSearchParams();
+    p.set("page", String(page));
+    p.set("limit", String(limit));
+    if (kw.trim()) p.set("keyword", kw.trim());
+    return p.toString();
+  }, [page, limit, kw]);
+
+  async function load() {
+    setLoading(true); setErr("");
+    try {
+      const res = await fetch(`${API}/api/lop-hoc?${query}`);
+      const js = await res.json();
+      if (!res.ok) throw new Error(js?.message || `HTTP ${res.status}`);
+      setItems(js.items || []);
+      setTotal(js.total || 0);
+    } catch (e) { setErr(String(e.message || e)); setItems([]); setTotal(0); }
+    finally { setLoading(false); }
+  }
+  useEffect(() => { load(); /* eslint-disable-next-line */ }, [query]);
+
+  // them moi (ten_lop => backend map sang ten_mon_hoc; ghi_chu => phong_hoc)
+  async function handleAdd(e) {
+    e.preventDefault(); setErr("");
+    if (!maLop || !tenLop) { setErr("Vui long nhap Ma lop va Ten lop"); return; }
+    try {
+      const res = await fetch(`${API}/api/lop-hoc`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ma_lop: maLop.trim(), ten_lop: tenLop.trim(), ghi_chu: ghiChu.trim() || null }),
+      });
+      const js = await res.json();
+      if (!res.ok) throw new Error(js?.message || `HTTP ${res.status}`);
+      setMaLop(""); setTenLop(""); setGhiChu("");
+      await load();
+    } catch (e) { setErr(String(e.message || e)); }
+  }
+
+  function startEdit(r){ setEditRow({ ma_lop:r.ma_lop, ten_lop:r.ten_lop||"", ghi_chu:r.ghi_chu||"" }); }
+  function cancelEdit(){ setEditRow(null); }
+
+  async function saveEdit(){
+    if(!editRow) return; setErr("");
+    try{
+      const res = await fetch(`${API}/api/lop-hoc/${encodeURIComponent(editRow.ma_lop)}`, {
+        method:"PUT", headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ ten_lop: editRow.ten_lop.trim(), ghi_chu: editRow.ghi_chu.trim() || null }),
+      });
+      const js = await res.json();
+      if (!res.ok) throw new Error(js?.message || `HTTP ${res.status}`);
+      setEditRow(null); await load();
+    }catch(e){ setErr(String(e.message || e)); }
+  }
+
+  async function remove(ma_lop){
+    if(!confirm(`Xoa lop ${ma_lop}?`)) return; setErr("");
+    try{
+      const res = await fetch(`${API}/api/lop-hoc/${encodeURIComponent(ma_lop)}`, { method:"DELETE" });
+      const js = await res.json();
+      if (!res.ok) throw new Error(js?.message || `HTTP ${res.status}`);
+      await load();
+    }catch(e){ setErr(String(e.message || e)); }
+  }
+
+  return (
+    <div className="container mx-auto px-4 py-4">
+      <h1 className="text-2xl font-semibold mb-3">Lop hoc</h1>
+
+      {/* form them moi */}
+      <form onSubmit={handleAdd} className="grid grid-cols-1 md:grid-cols-12 gap-3 mb-4">
+        <div className="md:col-span-3">
+          <label className="block text-sm mb-1">Ma lop</label>
+          <input className="w-full border rounded px-3 py-2"
+                 value={maLop} onChange={e=>setMaLop(e.target.value)} placeholder="VD: CE304"/>
+        </div>
+        <div className="md:col-span-4">
+          <label className="block text-sm mb-1">Ten lop</label>
+          <input className="w-full border rounded px-3 py-2"
+                 value={tenLop} onChange={e=>setTenLop(e.target.value)} placeholder="VD: DA2"/>
+        </div>
+        <div className="md:col-span-3">
+          <label className="block text-sm mb-1">Ghi chu (phong hoc)</label>
+          <input className="w-full border rounded px-3 py-2"
+                 value={ghiChu} onChange={e=>setGhiChu(e.target.value)} placeholder="VD: C115"/>
+        </div>
+        <div className="md:col-span-2 flex items-end">
+          <button type="submit" className="bg-black text-white rounded px-4 py-2">Them</button>
+        </div>
+      </form>
+
+      <div className="flex items-center gap-3 mb-2">
+        <input className="border rounded px-3 py-2 flex-1"
+               value={kw} onChange={e=>setKw(e.target.value)} placeholder="Tim theo ma, ten lop, phong..."/>
+        <button onClick={load} className="bg-black text-white rounded px-4 py-2">Tai lai</button>
+        <span className="text-sm text-gray-600">Tong: {total}</span>
+      </div>
+
+      {err && <div className="text-red-600 mb-2">{err}</div>}
+      {loading && <div className="text-gray-500">Dang tai...</div>}
+
+      <div className="overflow-x-auto border rounded">
+        <table className="min-w-full text-sm">
+          <thead>
+            <tr className="bg-gray-50">
+              <th className="text-left px-3 py-2">Ma lop</th>
+              <th className="text-left px-3 py-2">Ten lop</th>
+              <th className="text-left px-3 py-2">Ghi chu</th>
+              <th className="text-left px-3 py-2">Hanh dong</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.length===0 && <tr><td className="px-3 py-3 text-gray-500" colSpan={4}>Chua co du lieu</td></tr>}
+            {items.map(r=>{
+              const editing = editRow && editRow.ma_lop===r.ma_lop;
+              return (
+                <tr key={r.ma_lop} className="border-t">
+                  <td className="px-3 py-2">{r.ma_lop}</td>
+                  <td className="px-3 py-2">
+                    {editing
+                      ? <input className="border rounded px-2 py-1 w-full"
+                               value={editRow.ten_lop}
+                               onChange={e=>setEditRow({...editRow, ten_lop:e.target.value})}/>
+                      : (r.ten_lop||"")}
+                  </td>
+                  <td className="px-3 py-2">
+                    {editing
+                      ? <input className="border rounded px-2 py-1 w-full"
+                               value={editRow.ghi_chu}
+                               onChange={e=>setEditRow({...editRow, ghi_chu:e.target.value})}/>
+                      : (r.ghi_chu||"")}
+                  </td>
+                  <td className="px-3 py-2">
+                    {editing ? (
+                      <div className="flex gap-2">
+                        <button onClick={saveEdit} className="bg-black text-white rounded px-3 py-1">Luu</button>
+                        <button onClick={cancelEdit} className="border rounded px-3 py-1">Huy</button>
+                      </div>
+                    ) : (
+                      <div className="flex gap-2">
+                        <button onClick={()=>startEdit(r)} className="border rounded px-3 py-1">Sua</button>
+                        <button onClick={()=>remove(r.ma_lop)} className="border rounded px-3 py-1">Xoa</button>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+
+      <div className="flex items-center gap-2 mt-3">
+        <button disabled={page<=1} onClick={()=>setPage(p=>Math.max(1,p-1))}
+                className="border rounded px-3 py-1 disabled:opacity-50">Prev</button>
+        <span>Trang {page}</span>
+        <button disabled={(page*limit)>=total} onClick={()=>setPage(p=>p+1)}
+                className="border rounded px-3 py-1 disabled:opacity-50">Next</button>
+      </div>
+    </div>
+  );
+}

@@ -1,0 +1,31 @@
+import express from "express";
+import cors from 'cors';
+const HOST = process.env.HOST || "0.0.0.0";
+const PORT = process.env.PORT || 8080;
+import cors from "cors";
+import path from "path";
+import { fileURLToPath } from "url";
+import faceRouter from "./routes/face.routes.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.use((req,res,next)=>{console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);next();});
+app.get("/api/health",(req,res)=>res.json({ok:true,ts:Date.now()}));
+app.use(cors());
+app.use(express.json({ limit: "10mb" }));
+app.use(express.urlencoded({ extended: true, limit: "10mb" }));
+
+// static cho ?nh �? l�u (t�y ?)
+app.use("/storage", express.static(path.join(__dirname, "..", "storage")));
+
+app.use("/api/face", faceRouter);
+
+// TODO: mount c�c routes kh�c c?a b?n...
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, HOST, () => console.log(`Backend dang chay tai http://${HOST}:${PORT}`)) => {
+  console.log(`Backend dang chay tai http://127.0.0.1:${PORT}`);
+});

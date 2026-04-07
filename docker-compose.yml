@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  db:
+    image: mariadb:11
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: diem_danh
+      MYSQL_USER: thith
+      MYSQL_PASSWORD: 15112004
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./database/diem_danh.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+
+  backend:
+    build: ./backend-node
+    env_file: ./backend-node/.env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  pythonface:
+    build: ./python-face
+    env_file: ./python-face/.env
+    ports:
+      - "5002:5002"
+
+  frontend:
+    build: ./frontend-react
+    env_file: ./frontend-react/.env
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+volumes:
+  dbdata:

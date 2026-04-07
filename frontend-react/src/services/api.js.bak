@@ -1,0 +1,29 @@
+// src/services/api.js
+// Helper goi API. Chi sua de het "Failed to fetch" khi front khong chay tren cung may voi backend.
+// KH�NG d�ng 127.0.0.1 n?u duy?t t? m�y kh�c
+export const API_BASE = "http://10.236.218.57:8080/api";   // v� d?: http://192.168.1.50:8080/api
+
+
+// Helper fetch JSON co kiem tra loi/Content-Type
+export async function httpJson(path, options = {}) {
+  const res = await fetch(`${API_BASE}${path}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {}),
+    },
+  });
+  const text = await res.text();
+  const ct = res.headers.get("content-type") || "";
+  if (!res.ok) throw new Error(`[${res.status}] ${res.statusText}: ${text.slice(0,200)}`);
+  if (!ct.includes("application/json")) throw new Error(`Khong phai JSON: ${text.slice(0,200)}`);
+  return JSON.parse(text);
+}
+
+// Tien ich nho cho GET/POST/PUT/DELETE
+export const api = {
+  get: (url) => httpJson(url),
+  post: (url, body) => httpJson(url, { method: "POST", body: JSON.stringify(body) }),
+  put: (url, body) => httpJson(url, { method: "PUT", body: JSON.stringify(body) }),
+  delete: (url) => httpJson(url, { method: "DELETE" }),
+};

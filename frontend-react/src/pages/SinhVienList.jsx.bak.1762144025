@@ -1,0 +1,114 @@
+import React, { useEffect, useState } from "react";
+
+const BASE = "http://127.0.0.1:8080"; // �p d�ng BE th?t
+
+export default function SinhVienList() {
+  const [rows, setRows] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
+  const [keyword, setKeyword] = useState("");
+
+  async function load() {
+    setLoading(true);
+    setErr("");
+    setRows([]);
+    setTotal(0);
+
+    try {
+      const params = new URLSearchParams({ page: "1", limit: "50" });
+      if (keyword) params.set("keyword", keyword);
+
+      const url = `${BASE}/api/sinh-vien?${params.toString()}`;
+      console.log("[SV-LIST] GET", url);
+
+      const res = await fetch(url, { headers: { Accept: "application/json" } });
+      const text = await res.text();
+      let json;
+      try {
+        json = JSON.parse(text);
+      } catch (e) {
+        throw new Error(`Kh�ng parse JSON. Status ${res.status}. Body: ${text.slice(0,200)}`);
+      }
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}. Body: ${text.slice(0,200)}`);
+      }
+      if (!json || !Array.isArray(json.items)) {
+        throw new Error(`JSON kh�ng c� 'items'. Body: ${text.slice(0,200)}`);
+      }
+
+      console.log("[SV-LIST] OK", json);
+      setRows(json.items);
+      setTotal(json.total ?? json.items.length);
+    } catch (e) {
+      console.error("[SV-LIST] ERROR", e);
+      setErr(String(e.message || e));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => { load(); /* eslint-disable-next-line */ }, []);
+
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-semibold mb-4">Sinh vi�n</h1>
+
+      {/* Thanh t�c v? */}
+      <div className="flex gap-2 items-center mb-4">
+        <input
+          className="border rounded px-3 py-2 w-64"
+          placeholder="T?m..."
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button
+          onClick={load}
+          className="px-3 py-2 rounded bg-black text-white"
+          disabled={loading}
+        >
+          {loading ? "�ang t?i..." : "T?i l?i"}
+        </button>
+        <span className="text-sm text-gray-600 ml-2">T?ng: {total}</span>
+      </div>
+
+      {/* Hi?n th? l?i ch?n �o�n */}
+      {err && (
+        <div className="mb-3 p-3 border border-red-300 bg-red-50 text-red-700 text-sm rounded">
+          <div className="font-medium mb-1">L?i khi g?i API</div>
+          <div>{err}</div>
+          <div className="mt-1 opacity-70">Endpoint: {BASE}/api/sinh-vien</div>
+        </div>
+      )}
+
+      {/* B?ng d? li?u */}
+      <div className="border rounded">
+        <table className="w-full text-sm">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="text-left p-2">MSSV</th>
+              <th className="text-left p-2">H? t�n</th>
+              <th className="text-left p-2">Email</th>
+              <th className="text-left p-2">Kh�a h?c</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.length === 0 && (
+              <tr>
+                <td className="p-3 text-gray-500" colSpan={4}>Ch�a c� d? li?u</td>
+              </tr>
+            )}
+            {rows.map((sv) => (
+              <tr key={sv.mssv} className="border-t">
+                <td className="p-2">{sv.mssv}</td>
+                <td className="p-2">{sv.ho_ten}</td>
+                <td className="p-2">{sv.email}</td>
+                <td className="p-2">{sv.khoa_hoc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}

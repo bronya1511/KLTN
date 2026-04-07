@@ -1,0 +1,100 @@
+import { Router } from "express";
+import { spawn } from "child_process";
+import path from "path";
+import process from "process";
+
+const router = Router();
+
+function tail(txt = "", lines = 60) {
+  const arr = (txt || "").split(/\r?\n/);
+  return arr.slice(Math.max(0, arr.length - lines)).join("\n");
+}
+
+function runCmd(cmd, args = [], { cwd, timeout = 60000 } = {}) {
+  return new Promise((resolve) => {
+    const child = spawn(cmd, args, {
+      cwd,
+      env: { ...process.env, PYTHONUNBUFFERED: "1" },
+      stdio: ["ignore", "pipe", "pipe"],
+    });
+
+    let stdout = "";
+    let stderr = "";
+
+    child.stdout.on("data", (d) => (stdout += d.toString()));
+    child.stderr.on("data", (d) => (stderr += d.toString()));
+
+    let killedByTimeout = false;
+    const to = setTimeout(() => {
+      killedByTimeout = true;
+      try { child.kill("SIGKILL"); } catch {}
+    }, timeout);
+
+    child.on("close", (code) => {
+      clearTimeout(to);
+      resolve({ code, stdout, stderr, killedByTimeout });
+    });
+  });
+}
+
+router.get("/ping", (_req, res) => {
+  res.json({ ok: true, at: Date.now() });
+});
+
+router.post("/enroll", async (req, res) => {
+  try {
+    const { mssv, soAnh = 3, camera = 0 } = req.body || {};
+    if (!mssv) return res.status(400).json({ ok: false, message: "Thieu mssv" });
+
+    const PYDIR =
+      process.env.PYTHON_FACE_DIR ||
+      path.join(process.cwd(), "../python-face");
+
+    // D?n ti?n tr?nh c? gi? camera (n?u c�)
+    await runCmd("bash", ["-lc", "pkill -f 'FaceDetect.py' || true; pkill -f libcamera || true"], { timeout: 5000 });
+
+    // B�?c 1: ch?p ?nh (detect)
+    const detect = await runCmd(
+      "python3",
+      ["-u", "FaceDetect.py", String(mssv), String(soAnh), String(camera)],
+      { cwd: PYDIR, timeout: 90_000 } // 90s cho ch?p
+    );
+
+    if (detect.code !== 0) {
+      return res.status(500).json({
+        ok: false,
+        step: "detect",
+        message: `Exit ${detect.code}${detect.killedByTimeout ? " (timeout)" : ""}`,
+        stdout: tail(detect.stdout, 80),
+        stderr: tail(detect.stderr, 80),
+      });
+    }
+
+    // B�?c 2: train
+    const train = await runCmd("python3", ["-u", "Train.py"], {
+      cwd: PYDIR,
+      timeout: 180_000, // 3 ph�t cho train
+    });
+
+    if (train.code !== 0) {
+      return res.status(500).json({
+        ok: false,
+        step: "train",
+        message: `Exit ${train.code}${train.killedByTimeout ? " (timeout)" : ""}`,
+        stdout: tail(train.stdout, 80),
+        stderr: tail(train.stderr, 80),
+      });
+    }
+
+    return res.json({
+      ok: true,
+      step: "done",
+      detectTail: tail(detect.stdout, 80),
+      trainTail: tail(train.stdout, 80),
+    });
+  } catch (err) {
+    return res.status(500).json({ ok: false, message: String(err?.stack || err) });
+  }
+});
+
+export default router;

@@ -1,0 +1,124 @@
+import React, { useEffect, useState } from "react";
+
+const BASE = "http://127.0.0.1:8080"; // BE thật
+
+export default function SinhVienList() {
+  const [rows, setRows] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState("");
+  const [keyword, setKeyword] = useState("");
+  const [lastUrl, setLastUrl] = useState("");
+  const [lastBody, setLastBody] = useState("");
+
+  async function load() {
+    setLoading(true);
+    setErr("");
+    setRows([]);
+    setTotal(0);
+    setLastBody("");
+
+    try {
+      const params = new URLSearchParams({ page: "1", limit: "50" });
+      if (keyword) params.set("keyword", keyword);
+
+      const url = `${BASE}/api/sinh-vien?${params.toString()}`;
+      setLastUrl(url);
+      console.log("[SV-LIST] GET", url);
+
+      const res = await fetch(url, { headers: { Accept: "application/json" } });
+      const text = await res.text();
+      setLastBody(text.slice(0, 1000)); // preview
+      let json;
+      try {
+        json = JSON.parse(text);
+      } catch (e) {
+        throw new Error(`Không parse JSON. HTTP ${res.status}. Body: ${text.slice(0,200)}`);
+      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}. Body: ${text.slice(0,200)}`);
+      if (!json || !Array.isArray(json.items))
+        throw new Error(`JSON không có 'items'. Body: ${text.slice(0,200)}`);
+
+      console.log("[SV-LIST] OK", json);
+      setRows(json.items);
+      setTotal(json.total ?? json.items.length);
+    } catch (e) {
+      console.error("[SV-LIST] ERROR", e);
+      setErr(String(e.message || e));
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => { load(); /* eslint-disable-next-line */ }, []);
+
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-semibold mb-4">Sinh viên</h1>
+
+      <div className="flex gap-2 items-center mb-4">
+        <input
+          className="border rounded px-3 py-2 w-64"
+          placeholder="Tìm..."
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button
+          onClick={load}
+          className="px-3 py-2 rounded bg-black text-white"
+          disabled={loading}
+        >
+          {loading ? "Đang tải..." : "Tải lại"}
+        </button>
+        <span className="text-sm text-gray-600 ml-2">Tổng: {total}</span>
+      </div>
+
+      {err && (
+        <div className="mb-3 p-3 border border-red-300 bg-red-50 text-red-700 text-sm rounded">
+          <div className="font-medium mb-1">Lỗi khi gọi API</div>
+          <div>{err}</div>
+        </div>
+      )}
+
+      {/* Debug panel */}
+      <details className="mb-4">
+        <summary className="cursor-pointer text-sm underline">Debug panel</summary>
+        <div className="text-xs mt-2">
+          <div className="mb-1"><b>URL:</b> {lastUrl || "(chưa gọi)"}</div>
+          <div className="mb-1"><b>Preview body (max 1000 chars):</b></div>
+          <pre className="p-2 bg-gray-100 rounded whitespace-pre-wrap">
+{lastBody || "(trống)"}
+          </pre>
+        </div>
+      </details>
+
+      <div className="border rounded">
+        <table className="w-full text-sm">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="text-left p-2">MSSV</th>
+              <th className="text-left p-2">Họ tên</th>
+              <th className="text-left p-2">Email</th>
+              <th className="text-left p-2">Khóa học</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.length === 0 && (
+              <tr>
+                <td className="p-3 text-gray-500" colSpan={4}>Chưa có dữ liệu</td>
+              </tr>
+            )}
+            {rows.map((sv) => (
+              <tr key={sv.mssv} className="border-t">
+                <td className="p-2">{sv.mssv}</td>
+                <td className="p-2">{sv.ho_ten}</td>
+                <td className="p-2">{sv.email}</td>
+                <td className="p-2">{sv.khoa_hoc}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}

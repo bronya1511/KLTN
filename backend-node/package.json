@@ -1,0 +1,27 @@
+{
+  "name": "da2-backend",
+  "version": "1.0.0",
+  "type":"module",
+  "scripts": {
+    "dev":"node src/server.js",
+    "start": "NODE_ENV=production node src/server.js",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "multer": "^2.0.2",
+    "mysql2": "^3.15.3",
+    "nodemailer": "^6.9.14",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.12.0"
+  }
+}
